@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"> Traditional Words </string>
+
+    <string name="share_the_question_with_friends"> Ask a friend </string>
+
+    <string name="share_question_text">Share</string>
+
+    <string name="share_title_hint">Write a title</string>
+
+    <string name="the_right_answer_is">The right Answer is </string>
+
+    <string name="back_text">Back</string>
+
+    <string name="permission_title"> permission title </string>
+
+    <string name="permission_explanation"> The application is asking for permission to write in the external storage in order to share the picture with other application </string>
+
+    <string name="permission_denied">  permission have been denied </string>
+    <string name="change_language">change language</string>
+
+
+
+    <string-array name="answers">
+
+        <item>Eqal</item>
+
+        <item>Scalp</item>
+
+        <item>Sadu</item>
+
+        <item>Henna</item>
+
+        <item>Dallah</item>
+
+        <item>Slippers</item>
+
+        <item>dagger</item>
+
+        <item>Tiger</item>
+
+        <item>lamp</item>
+
+        <item>Lantern</item>
+
+        <item>Cowl</item>
+
+        <item>Turban</item>
+
+        <item>Gulf countries Dress</item>
+
+    </string-array>
+
+
+    <string-array name="answer_description">
+
+        <item> Place on top of the Eqal </item>
+
+        <item> Padded with cotton to protect the body from cold whether </item>
+
+        <item> One of the traditional cloth</item>
+
+        <item> Men use it to dye beard , woman use it to dye hands </item>
+
+        <item>Container has an arabic coffee use to serve guest </item>
+
+        <item> Slippers , Created from cover, its very famous in the arabic culture </item>
+
+        <item> light knife placed in Waist </item>
+
+        <item> Arabic Pillow used for leaning arms </item>
+
+        <item>its a tools used for lighting rooms </item>
+
+        <item> its a tools used for lighting rooms and decoration </item>
+
+        <item> ٌRed hat famous in Sham , Egypt, Morocco</item>
+
+        <item>cover around the head</item>
+
+        <item>Arabic dress famous Gulf countries </item>
+
+    </string-array>
+</resources>
