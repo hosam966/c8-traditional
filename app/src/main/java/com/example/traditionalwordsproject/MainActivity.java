@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = getSharedPreferences("app_lang",MODE_PRIVATE);
-        String appLang = sharedPreferences.getString("app_lang","");
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.APP_LANG,MODE_PRIVATE);
+        String appLang = sharedPreferences.getString(MainActivity.APP_LANG,"");
         if (appLang.equals(""))
-            com.example.traditionalwordsproject.LocaleHelper.setLocale(this,"app_lang");
+            com.example.traditionalwordsproject.LocaleHelper.setLocale(this,MainActivity.APP_LANG);
 
         setContentView(R.layout.activity_main);
         mQuestionImageView = findViewById(R.id.image_view_question);
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                             case 1:
                                 language = "en";
                                 break;
+
                         }
                         LocaleHelper.setLocale(MainActivity.this, language);
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -85,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveLanguage (String lang){
-        SharedPreferences sharedPreferences = getSharedPreferences("app_pref",MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.APP_PREF,MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("app_lang",lang);
+        editor.putString(MainActivity.APP_LANG,lang);
         editor.apply();
     }
 
