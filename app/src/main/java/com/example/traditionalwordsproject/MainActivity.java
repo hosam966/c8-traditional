@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] answerDetails;
     private ImageView mQuestionImageView;
     private Random mRandom;
-    private int[] imagesQuestionViewsArrays = {
+    private int[] imagesQuestionViewsArrays  = {
             R.drawable.icon_1,
             R.drawable.icon_2,
             R.drawable.icon_3,
