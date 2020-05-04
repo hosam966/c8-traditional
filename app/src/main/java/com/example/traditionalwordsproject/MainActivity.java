@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentIndex = 1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.APP_LANG,MODE_PRIVATE);
         String appLang = sharedPreferences.getString(MainActivity.APP_LANG,"");
