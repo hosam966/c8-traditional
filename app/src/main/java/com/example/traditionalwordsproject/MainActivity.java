@@ -1,6 +1,7 @@
 package com.example.traditionalwordsproject;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -8,7 +9,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,9 +20,11 @@ import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
+    public static final String BUNDLE_CURRENT_INDEX = "BUNDLE_CURRENT_INDEX";
     public static final String ANSWER_SHARE_TITLE_KEY = "answer_share_title_key";
     public static final String APP_PREF ="app_pref";
     public static final String APP_LANG = "app_lang";
+    private static final String TAG = MainActivity.class.getSimpleName();
     private String[] answersShareTitle;
     private String[] answerDetails;
     private ImageView mQuestionImageView;
@@ -44,12 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
-        saveLanguage(MainActivity.APP_LANG);
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.APP_LANG,MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.APP_PREF,MODE_PRIVATE);
         String appLang = sharedPreferences.getString(MainActivity.APP_LANG,"1");
+
         if (!appLang.equals("1"))
-            com.example.traditionalwordsproject.LocaleHelper.setLocale(this,MainActivity.APP_LANG);
+            LocaleHelper.setLocale(this,appLang);
+
         setContentView(R.layout.activity_main);
         mQuestionImageView = findViewById(R.id.image_view_question);
         answersShareTitle = getResources().getStringArray(R.array.answers);
@@ -81,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
     }
 
+
+
     private void saveLanguage (String lang){
         SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.APP_PREF,MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -106,6 +114,21 @@ public class MainActivity extends AppCompatActivity {
         startActivity(mAnswerIntent);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(BUNDLE_CURRENT_INDEX,mCurrentIndex);
+        Log.d(TAG,"onSaveInstanceState" );
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mCurrentIndex = savedInstanceState.getInt(BUNDLE_CURRENT_INDEX);
+        Drawable mGuessPicDrawable = ContextCompat.getDrawable(this,imagesQuestionViewsArrays[mCurrentIndex]);
+        mQuestionImageView.setImageDrawable(mGuessPicDrawable);
+
+    }
     public void showImage() {
         Drawable imagesQuestionViewsDrawable = ContextCompat.getDrawable(this, imagesQuestionViewsArrays[mCurrentIndex]);
         mQuestionImageView.setImageDrawable(imagesQuestionViewsDrawable);
